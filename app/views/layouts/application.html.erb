@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RailsProject</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= stylesheet_link_tag "style" %>
+        <%= favicon_link_tag 'favicon.png ' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <nav class="header">
+            <ul>
+                <a href="/">
+                    <li>Home</li>
+                </a>
+                <% if !user_signed_in? %>
+                    <%= link_to new_user_session_path, :method => :get do %>
+                        <li>Sign in</li>
+                    <% end %>
+                    <%= link_to new_user_registration_path, :method => :get do %>
+                        <li>Sign up</li>
+                    <% end %>
+                <% else %>
+                    <%= link_to contact_path, :method => :get do %>
+                        <li>Contact</li>
+                    <% end %>
+                    <% if current_user.level > 0 %>
+                        <%= link_to users_path, :method => :get do %>
+                            <li>Admin</li>
+                        <% end %>
+                    <% end %>
+                    <%= link_to destroy_user_session_path, :method => :delete do %>
+                        <li>Delog</li>
+                    <% end %>
+                <% end %>
+            </ul>
+        </nav>
+        <section class="content">
+            <%= yield %>
+        </section>
+    </body>
+</html>

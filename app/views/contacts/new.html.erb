@@ -1,0 +1,12 @@
+<div class="contact">
+    <h3>Contact</h3>
+    <%= simple_form_for @contact, :html => { :class => 'form-horizontal' } do |f| %>
+        <%= f.input :message, :as => :text, :required => true %>
+        <div class="hidden">
+            <%= f.input :login, :input_html => { :value => current_user.login }, :required => true %>
+            <%= f.input :email, :input_html => { :value => current_user.email }, :required => true %>
+            <%= f.input :nickname, :hint => 'Do not fill this' %>
+        </div>
+        <%= f.button :submit, 'Send' %>
+    <% end %>
+</div>

@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+    <h3>You are logged.</h3>
+<% else %>
+    <h3>What a shame, it appears you're not logged. Want to change that ?</h3>
+<% end %>
+<div class="home">
+    <%= image_tag("tarte-citron.jpg", :alt => "rss feed") %>
+</div>
