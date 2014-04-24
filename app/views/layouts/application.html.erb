@@ -6,6 +6,7 @@
         <%= stylesheet_link_tag "style" %>
         <%= favicon_link_tag 'favicon.png ' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag :application %>
         <%= csrf_meta_tags %>
     </head>
     <body>
@@ -29,6 +30,9 @@
                         <%= link_to users_path, :method => :get do %>
                             <li>Admin</li>
                         <% end %>
+						<%= link_to forem.admin_root_url do %>
+                            <li>Forum Admin</li>
+						<% end %>
                     <% end %>
                     <%= link_to destroy_user_session_path, :method => :delete do %>
                         <li>Delog</li>

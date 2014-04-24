@@ -31,6 +31,8 @@ gem 'devise'
 gem 'mail'
 gem 'mail_form'
 gem 'simple_form'
+gem 'forem', :github => "radar/forem", :branch => "rails4"
+gem 'will_paginate', '3.0.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
