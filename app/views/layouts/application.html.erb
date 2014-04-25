@@ -6,38 +6,39 @@
         <%= stylesheet_link_tag "style" %>
         <%= favicon_link_tag 'favicon.png ' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= javascript_include_tag "application" %>
         <%= csrf_meta_tags %>
     </head>
     <body>
         <nav class="header">
             <ul>
                 <a href="/">
-                    <li>Home</li>
+                    <li><%=t :home %></li>
                 </a>
                 <% if !user_signed_in? %>
                     <%= link_to new_user_session_path, :method => :get do %>
-                        <li>Sign in</li>
+                        <li><%=t :signin %></li>
                     <% end %>
                     <%= link_to new_user_registration_path, :method => :get do %>
-                        <li>Sign up</li>
+                        <li><%=t :signup %></li>
                     <% end %>
                 <% else %>
                     <%= link_to forem_path, :method => :get do %>
-                        <li>Forums</li>
+                        <li><%=t :forums %></li>
                     <% end %>
                     <%= link_to contact_path, :method => :get do %>
-                        <li>Contact</li>
+                        <li><%=t :contact %></li>
                     <% end %>
                     <% if current_user.level > 0 %>
                         <%= link_to users_path, :method => :get do %>
-                            <li>Admin</li>
+                            <li><%=t :admin %></li>
                         <% end %>
 						<%= link_to forem.admin_root_url do %>
-                            <li>Forum Admin</li>
+                            <li><%=t :forumadmin %></li>
 						<% end %>
                     <% end %>
                     <%= link_to destroy_user_session_path, :method => :delete do %>
-                        <li>Delog</li>
+                        <li><%=t :delog %></li>
                     <% end %>
                 <% end %>
             </ul>
