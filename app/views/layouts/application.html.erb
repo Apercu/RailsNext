@@ -6,7 +6,6 @@
         <%= stylesheet_link_tag "style" %>
         <%= favicon_link_tag 'favicon.png ' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= javascript_include_tag :application %>
         <%= csrf_meta_tags %>
     </head>
     <body>
@@ -23,6 +22,9 @@
                         <li>Sign up</li>
                     <% end %>
                 <% else %>
+                    <%= link_to forem_path, :method => :get do %>
+                        <li>Forums</li>
+                    <% end %>
                     <%= link_to contact_path, :method => :get do %>
                         <li>Contact</li>
                     <% end %>

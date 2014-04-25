@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RailsProject : Forums</title>
+        <%= favicon_link_tag 'favicon.png ' %>
+		<%= stylesheet_link_tag    "forem", media: "all", "data-turbolinks-track" => true %>
+        <%= stylesheet_link_tag "style" %>
+		<%= javascript_include_tag "forem", "data-turbolinks-track" => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<%= forem_atom_auto_discovery_link_tag %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<nav class="header">
+		<ul>
+			<a href="/">
+				<li>Home</li>
+			</a>
+			<% if !user_signed_in? %>
+				<%= link_to main_app.new_user_session_path, :method => :get do %>
+					<li>Sign in</li>
+				<% end %>
+				<%= link_to main_app.new_user_registration_path, :method => :get do %>
+					<li>Sign up</li>
+				<% end %>
+			<% else %>
+				<%= link_to main_app.contact_path, :method => :get do %>
+					<li>Contact</li>
+				<% end %>
+				<% if current_user.level > 0 %>
+					<%= link_to main_app.users_path, :method => :get do %>
+						<li>Admin</li>
+					<% end %>
+					<%= link_to forem.admin_root_url do %>
+						<li>Forum Admin</li>
+					<% end %>
+				<% end %>
+				<%= link_to main_app.destroy_user_session_path, :method => :delete do %>
+					<li>Delog</li>
+				<% end %>
+			<% end %>
+		</ul>
+		</nav>
+		<section class="content">
+		<% flash.each do |k,v| %>
+			<div class='flash <%= k %>'><%= v %></div>
+		<% end %>
+		<%= yield %>
+		</section>
+	</body>
+</html>

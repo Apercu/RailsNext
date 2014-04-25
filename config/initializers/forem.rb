@@ -3,6 +3,8 @@ Forem.email_from_address = "bgronon.dev@gmail.com"
 # If you do not want to use gravatar for avatars then specify the method to use here:
 # Forem.avatar_user_method = :custom_avatar_url
 Forem.per_page = 20
+#Forem.layout = 'application'
+#Forem::ApplicationController.layout "application"
 
 
 # Rails.application.config.to_prepare do

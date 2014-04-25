@@ -23,7 +23,7 @@ $base25: rgb(156,239,108);
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 12px;
     color: white;
 }
@@ -49,6 +49,7 @@ body {
 }
 
 .header {
+margin-top: 0;
     background-color: $base13;
     padding: 20px 50px;
     border-bottom: 5px solid rgba(black, .1);
@@ -86,6 +87,38 @@ body {
             right: 0;
         }
     }
+}
+
+.forums {
+	thead {
+		th {
+			background-color: $base11;
+		}
+	}
+}
+
+.forum, .category, #forum, #topic {
+	h2 {
+		font-family: Arial;
+		color: white;
+		font-size: 20px;
+	}
+	#description {
+		display: none;
+	}
+	td {
+		background-color: inherit !important;
+	}
+	thead {
+		th {
+			background-color: $base11;
+		}
+	}
+}
+
+.btn-primary {
+	background-color: $base02;
+	border-color: $base13;
 }
 
 #error_explanation {

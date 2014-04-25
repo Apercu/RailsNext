@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/radar/forem-bootstrap.git
+  revision: 10be50afc1d0a22af1306076e41624c55fc585be
+  specs:
+    forem-bootstrap (0.0.1)
+      bootstrap-sass (~> 3.1)
+
+GIT
   remote: git://github.com/radar/forem.git
   revision: ac0e231cd30a8703d26b777502f05aea55696747
   branch: rails4
@@ -45,6 +52,8 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    bootstrap-sass (3.1.1.1)
+      sass (~> 3.2)
     builder (3.2.2)
     cancancan (1.7.1)
     coffee-rails (4.0.1)
@@ -163,6 +172,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   forem!
+  forem-bootstrap!
   jbuilder (~> 2.0)
   jquery-rails
   mail
