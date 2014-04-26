@@ -39,6 +39,10 @@
                     <li><%=t :delog %></li>
 				<% end %>
 			<% end %>
+			<span>
+				<%= link_to_unless I18n.locale == :en, "English", main_app.set_language_english_path %> | 
+				<%= link_to_unless I18n.locale == :ch, "Chinese", main_app.set_language_chinese_path %>
+			</span>
 		</ul>
 		</nav>
 		<section class="content">

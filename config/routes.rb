@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'set_language/english'
+
+  get 'set_language/chinese'
+
   # This line mounts Forem's routes at /forums by default.
   # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
   # If you would like to change where this extension is mounted, simply change the :at option to something different.

@@ -11,21 +11,21 @@
         </div>
     <% end %>
     <div class="field">
-        <%= f.label :login %>
+        <%= f.label :login, t('login') %>
         <%= f.text_field :login %>
     </div>
     <div class="field">
-        <%= f.label :email %>
+        <%= f.label :email, t('email') %>
         <%= f.text_field :email %>
     </div>
-    <div class="field"><%= f.label :password %>
+    <div class="field"><%= f.label :password, t('password') %>
         <%= f.password_field :password, autocomplete: "off" %>
     </div>
-    <div class="field"><%= f.label :password_confirmation %>
+    <div class="field"><%= f.label :password_confirmation, t('confirmation') %>
         <%= f.password_field :password_confirmation, autocomplete: "off" %>
     </div>
     <div class="field">
-        <%= f.label :level %>
+        <%= f.label :level, t('level') %>
         <%= f.number_field :level %>
     </div>
     <div class="actions">
