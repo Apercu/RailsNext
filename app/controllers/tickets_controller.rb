@@ -61,6 +61,9 @@ class TicketsController < ApplicationController
 			if (params[:comment].length > 0)
 				@ticket.comments.push({"user" => current_user.login, "content" => params[:comment], "time" => Time.now.strftime("%H:%M:%S %Y-%d-%m") })
 			end
+			if (params[:assigned_to] && params[:assigned_to].is_number?)
+				@ticket.assigned_to = params[:assigned_to].to_i
+			end
 			respond_to do |format|
 				if @ticket.update(ticket_update_params)
 					format.html { redirect_to @ticket, notice: t('ticketupdated') }
@@ -76,6 +79,10 @@ class TicketsController < ApplicationController
 	# DELETE /tickets/1
 	# DELETE /tickets/1.json
 	def destroy
+	end
+
+	def is_number
+		true if Float(self) rescue false
 	end
 
 	private
