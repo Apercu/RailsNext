@@ -12,7 +12,17 @@
 <br>
 <p>
 <strong><%= t('comments')%>:</strong>
-<%= @ticket.comments %>
+<div class="comments">
+<% @ticket.comments.each do |comment| %>
+	<div class="comment">
+		"<%= comment['content'] %>"
+		<span class="infos"><%= t('by') %>
+		<%= comment['user'] %>
+		<%= t('the') %>
+		<%= comment['time'] %></span>
+	</div>
+<% end %>
+</div>
 </p>
 
 <p>
@@ -30,9 +40,24 @@
 <%= @ticket.assigned_to %>
 </p>
 
-<%= form_for @ticket, html: {multipart: true} do |f| %>
+<br>
+<%= form_for @ticket do |f| %>
+	<h3><%= t('editticket') %></h3>
 
-	<%= select_tag :status, options_for_select([[t('open'), 1], [t('closed'), 2]]) %>
+	<div class="field">
+		<%= f.label :status, t('status') %><br>
+		<%= f.select :status, options_for_select([[t('open'), 'open'], [t('closed'), 'closed']]), :include_blank => true %>
+	</div>
+	<div class="field">
+		<%= f.label :comment , t('addcomment') %><br>
+		<%= text_field_tag :comment %>
+	</div>
+    <% if current_user.level > 0 %>
+		<div class="field">
+			<%= f.label :assigned_to, t('assigned') %><br>
+			<%= text_field_tag :assigned_to %>
+		</div>
+	<% end %>
 	<div class="actions">
 		<%= f.submit %>
 	</div>

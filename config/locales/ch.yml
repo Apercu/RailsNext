@@ -42,6 +42,12 @@ ch:
   ticketupdated: "票已成功更新"
   open: "开"
   closed: "关闭"
+  addcomment: "添加评论"
+  by: "通过"
+  the: "该"
+  deleteyourself: "您无法删除自己"
+  userupdated: "用户已成功更新"
+  usercreated: "用户已成功创建"
   date:
     abbr_day_names:
     - 日

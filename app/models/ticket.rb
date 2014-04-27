@@ -1,6 +1,6 @@
 class Ticket < ActiveRecord::Base
 
 	belongs_to :user
-	serialize :comments
+	serialize :comments, Array
 
 end

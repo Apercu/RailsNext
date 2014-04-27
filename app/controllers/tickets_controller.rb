@@ -17,7 +17,7 @@ class TicketsController < ApplicationController
 	# GET /tickets/1.json
 	def show
 		tik = Ticket.find(params[:id])
-		if (!(current_user.level > 0 || tik.user == current_user.id))
+		if (!(current_user.level > 0 || tik.user_id == current_user.id))
             flash[:error] = "You are not authorized to view that page."
             redirect_to root_path
 		end
@@ -57,7 +57,10 @@ class TicketsController < ApplicationController
 	# PATCH/PUT /tickets/1.json
 	def update
 		tik = Ticket.find(params[:id])
-		if (current_user.level > 0 || tik.user == current_user.id)
+		if (current_user.level > 0 || tik.user_id == current_user.id)
+			if (params[:comment].length > 0)
+				@ticket.comments.push({"user" => current_user.login, "content" => params[:comment], "time" => Time.now.strftime("%H:%M:%S %Y-%d-%m") })
+			end
 			respond_to do |format|
 				if @ticket.update(ticket_update_params)
 					format.html { redirect_to @ticket, notice: t('ticketupdated') }
@@ -87,6 +90,6 @@ class TicketsController < ApplicationController
 	end
 
 	def ticket_update_params
-		params.require(:ticket).permit(:comments, :status, :assigned_to)
+		params.require(:ticket).permit(:comment, :status, :assigned_to)
 	end
 end

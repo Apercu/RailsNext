@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
         respond_to do |format|
             if @user.save
-                format.html { redirect_to @user, notice: 'User was successfully created.' }
+                format.html { redirect_to @user, notice: t('usercreated') }
                 format.json { render :show, status: :created, location: @user }
             else
                 format.html { render :new }
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 
         respond_to do |format|
             if successfully_updated
-                format.html { redirect_to @user, notice: 'User was successfully updated.' }
+                format.html { redirect_to @user, notice: t('userupdated') }
                 format.json { head :no_content }
             else
                 format.html { render action: 'edit' }
@@ -80,8 +80,7 @@ class UsersController < ApplicationController
         user = User.find(params[:id])
         if (current_user == user)
             respond_to do |format|
-                flash[:error] = "Can not delete own admin account!"
-                format.html { redirect_to users_url, notice: "You can't delete yourself" }
+                format.html { redirect_to users_url, notice: t('deleteyourself') }
                 format.json { head :no_content }
             end
         else
