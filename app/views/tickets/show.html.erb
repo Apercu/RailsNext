@@ -27,7 +27,9 @@
 
 <p>
 <strong><%= t('status')%>:</strong>
-<%= @ticket.status %>
+<% if @ticket.status != "" %>
+	<%= t(@ticket.status) %>
+<% end %>
 </p>
 
 <p>
@@ -46,7 +48,7 @@
 
 	<div class="field">
 		<%= f.label :status, t('status') %><br>
-		<%= f.select :status, options_for_select([[t('open'), 'open'], [t('closed'), 'closed']]), :include_blank => true %>
+		<%= f.select :status, options_for_select([[t('open'), 'open'], [t('closed'), 'closed']]) %>
 	</div>
 	<div class="field">
 		<%= f.label :comment , t('addcomment') %><br>
