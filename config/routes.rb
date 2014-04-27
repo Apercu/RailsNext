@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :tickets
+
   get 'set_language/english'
 
   get 'set_language/chinese'

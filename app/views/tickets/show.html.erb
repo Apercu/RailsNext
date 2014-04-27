@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<h1><%= t('title')%>:
+	<%= @ticket.title %></h1>
+</p>
+
+<p>
+<%= @ticket.content %>
+</p>
+
+<br>
+<p>
+<strong><%= t('comments')%>:</strong>
+<%= @ticket.comments %>
+</p>
+
+<p>
+<strong><%= t('status')%>:</strong>
+<%= @ticket.status %>
+</p>
+
+<p>
+<strong><%= t('user')%>:</strong>
+<%= @ticket.user_id %>
+</p>
+
+<p>
+<strong><%= t('assigned')%>:</strong>
+<%= @ticket.assigned_to %>
+</p>
+
+<%= form_for @ticket, html: {multipart: true} do |f| %>
+
+	<%= select_tag :status, options_for_select([[t('open'), 1], [t('closed'), 2]]) %>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+<br>
+<%= link_to t('back'), tickets_path %>

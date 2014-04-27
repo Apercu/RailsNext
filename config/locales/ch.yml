@@ -27,6 +27,21 @@ ch:
   listofusers: "用户列表"
   level: "级别"
   save: "节省"
+  title: "标题"
+  content: "内容"
+  comments: "评论"
+  status: "状态"
+  user: "用户"
+  assigned: "分配给"
+  listingtickets: "上市门票"
+  new: "新"
+  editticket: "编辑票"
+  tickets: "门票"
+  newticket: "新票"
+  ticketcreated: "票已成功创建"
+  ticketupdated: "票已成功更新"
+  open: "开"
+  closed: "关闭"
   date:
     abbr_day_names:
     - 日
@@ -409,6 +424,8 @@ ch:
         pending_review: 这个回复正在被审查，只有审查者跟创建者能访问。
     moderation:
       title: "审查工具：%{forum}"
+      index:
+        title: 标题
   simple_form:
     labels:
       forum:

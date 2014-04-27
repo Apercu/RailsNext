@@ -1,0 +1,31 @@
+<h1><%= t('listingtickets') %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t('title')%></th>
+      <th><%= t('content')%></th>
+      <th><%= t('status')%></th>
+      <th><%= t('user')%></th>
+      <th><%= t('assigned')%></th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tickets.each do |ticket| %>
+      <tr>
+        <td><%= ticket.title %></td>
+        <td><%= ticket.content %></td>
+        <td><%= ticket.status %></td>
+        <td><%= ticket.user_id %></td>
+        <td><%= ticket.assigned_to %></td>
+        <td><%= link_to t('show'), ticket %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('new'), new_ticket_path %>
