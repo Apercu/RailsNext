@@ -2,8 +2,7 @@ class User < ActiveRecord::Base
 
   has_many :tickets
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  devise :ldap_authenticatable, :rememberable, :trackable
 
   def forem_name
 	  login

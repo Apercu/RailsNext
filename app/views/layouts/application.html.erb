@@ -19,9 +19,6 @@
                     <%= link_to new_user_session_path, :method => :get do %>
                         <li><%=t :signin %></li>
                     <% end %>
-                    <%= link_to new_user_registration_path, :method => :get do %>
-                        <li><%=t :signup %></li>
-                    <% end %>
                 <% else %>
                     <%= link_to forem_path, :method => :get do %>
                         <li><%=t :forums %></li>
@@ -45,7 +42,7 @@
                     <% end %>
                 <% end %>
 				<span>
-					<%= link_to_unless I18n.locale == :en, "English", set_language_english_path %> | 
+					<%= link_to_unless I18n.locale == :en, "English", set_language_english_path %> |
 					<%= link_to_unless I18n.locale == :ch, "Chinese", set_language_chinese_path %>
 				</span>
             </ul>
