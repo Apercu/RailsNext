@@ -26,7 +26,7 @@ development:
   attribute: uid
   base: ou=2013,ou=people,dc=42,dc=fr
   #admin_user: cn=bgronon,dc=42,dc=fr
-  #admin_password: 
+  #admin_password:
   ssl: false
   # <<: *AUTHORIZATIONS
 
