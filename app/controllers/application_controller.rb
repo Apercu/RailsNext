@@ -12,24 +12,6 @@ class ApplicationController < ActionController::Base
 	require 'rubygems'
 	require 'net/ldap'
 
-	puts Devise::LDAP::Adapter.get_ldap_param("bgronon","")
-
-	target  = "target.rb"
-	content = <<-RUBY
-		puts "I'm the target!"
-	RUBY
-	File.open(target, "w+") do |f|
-		f.write(content)
-	end
-
-
-
-
-
-
-
-
-
 
 	ldap = Net::LDAP.new(
 		:host => 'ldap.42.fr',
@@ -39,17 +21,6 @@ class ApplicationController < ActionController::Base
 
 	filter = Net::LDAP::Filter.eq("uid", "*")
 	treebase = "dc=42, dc=fr"
-
-	ldap.search(:base => treebase, :filter => filter) do |entry|
-		puts "dn: #{entry.dn}"
-		entry.each do |attribute, values|
-			puts "   #{attribute}:"
-			values.each do |value|
-				puts "      --->#{value}"
-			end
-		end
-	end
-	p ldap.get_operation_result
 
 	credentials = {
 		:method => :simple,
@@ -63,6 +34,23 @@ class ApplicationController < ActionController::Base
 			puts "OKAY"
 		end
 	end
+
+	puts Devise::LDAP::Adapter.get_ldap_param("bgronon","")
+	ldap.search(:base => treebase, :filter => filter) do |entry|
+		puts "dn: #{entry.dn}"
+		entry.each do |attribute, values|
+			values.each do |value|
+				"<tr>"
+					"<td><img src='data:image/png;base64,#{value.picture}'></td>"
+					"<td>#{value.uid}</td>"
+					"<td>#{value.prenom}</td>"
+					"<td>#{value.nom}</td>"
+					"<td>#{value.mobile-phone}</td>"
+				"</tr>"
+			end
+		end
+	end
+	p ldap.get_operation_result
 
 	ldap = Net::LDAP.new(
 		:host => "ldap.42.fr",

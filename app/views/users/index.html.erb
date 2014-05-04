@@ -20,3 +20,9 @@
     <% end %>
   </tbody>
 </table>
+<% file = File.open('log/development.log', 'r') do |f| %>
+	<% f.each do |line| %>
+		<%= line %>
+		<br>
+	<% end %>
+<% end %>
